@@ -1,0 +1,9 @@
+{
+  "name": "offrecord-get-login",
+  "dependencies": {
+    "@architect/data": "^2.0.9",
+    "@architect/functions": "^1.11.1",
+    "@begin/data": "^1.1.0",
+    "tiny-json-http": "^7.0.2"
+  }
+}
