@@ -1,4 +1,5 @@
 let tiny = require('tiny-json-http')
+let redirect = require('@architect/shared/get-slack-redirect')
 
 // oauth w slack
 module.exports = async function slack(req) {
@@ -7,10 +8,10 @@ module.exports = async function slack(req) {
   let result = await tiny.get({
     url: `https://slack.com/api/oauth.access`,
     data: {
-      client_id: process.env.SLACK_CLIENT_ID,
+      client_id: process.env.SLACK_CLIENT_ID.replace('"', ''),
       client_secret: process.env.SLACK_CLIENT_SECRET,
       code: req.query.code,
-      redirect_uri: getRedirect(),
+      redirect_uri: redirect(),
     }
   })
 
@@ -35,19 +36,4 @@ module.exports = async function slack(req) {
   let avatar = account.body.user.image_48
 
   return {token, teamID, userID, name, team, email, avatar}
-}
-
-function getRedirect() {
-  if (process.env.NODE_ENV === 'testing') {
-    return 'https://localhost:3333/login'
-  }
-  else if (process.env.NODE_ENV === 'staging') {
-    return 'https://otr-staging.begin.com/login'
-  }
-  else if (process.env.NODE_ENV === 'production') {
-    return 'https://otr.begin.com/login'
-  }
-  else {
-    return 'https://otr-staging.begin.com/login'
-  }
 }

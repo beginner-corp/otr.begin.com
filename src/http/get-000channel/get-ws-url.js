@@ -1,5 +1,5 @@
 module.exports = function getUrl() {
-  let testing = 'wss://localhost:3333'
+  let testing = 'ws://localhost:3333'
   if (process.env.NODE_ENV === 'testing') {
     return testing
   }
