@@ -2,6 +2,7 @@ export default async function main() {
 
   let url = window.WS_URL
   let otp = window.WS_OTP
+  let render = window.WS_RENDER
 
   let ws = new WebSocket(url)
   ws.onopen = open
@@ -18,7 +19,6 @@ export default async function main() {
   }
 
   function close(e) {
-    send({action:'disconnected'})
     console.log('close called with', e)
   }
 
@@ -27,8 +27,7 @@ export default async function main() {
   }
 
   function message(e) {
-    let msg = JSON.parse(e.data)
-    console.log('msg', msg)
+    render(JSON.parse(e.data))
   }
 
   let msg = document.getElementById('message')

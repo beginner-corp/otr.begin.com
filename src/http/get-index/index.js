@@ -6,7 +6,7 @@ exports.handler = async function http(req) {
   if (session.account) {
     return {
       status: 302,
-      location: `/${session.account.teamID}`
+      location: `/${session.account.teamID}-${session.account.userID}`
     }
   }
   else {

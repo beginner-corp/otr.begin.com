@@ -35,5 +35,5 @@ module.exports = async function slack(req) {
   let email = account.body.user.email
   let avatar = account.body.user.image_48
 
-  return {token, teamID, userID, name, team, email, avatar}
+  return {teamID, userID, name, team, email, avatar}
 }

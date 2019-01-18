@@ -1,6 +1,7 @@
+let arc = require('@architect/functions')
 let data = require('@begin/data')
 
-module.exports = async function connected({payload, connectionID}) {
+module.exports = async function connected({event, payload, connectionID}) {
   // lookup the one time password
   let otp = await data.get({
     table: 'otp',
@@ -16,6 +17,7 @@ module.exports = async function connected({payload, connectionID}) {
       table: `team-${otp.account.teamID}`,
       key: otp.account.userID,
       account: otp.account,
+      action: 'connect',
       connectionID,
     }
     // lookup connections by connectionID
@@ -24,9 +26,11 @@ module.exports = async function connected({payload, connectionID}) {
       key: connectionID,
       account: otp.account,
     }
+    // work as quickly as possible
     await Promise.all([
       data.destroy(otp),
       data.set([active, connection]),
+      arc.ws(event).send({id:connectionID, payload:active})
     ])
   }
 }

@@ -1,0 +1,58 @@
+body {
+  margin:0;
+  font-family: Verdana;
+}
+
+main {
+  display: flex;
+}
+
+.left-column {
+  background: lightgrey;
+  min-width: 200px;
+}
+
+.left-column a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+  font-size: large;
+}
+
+.left-column a:before {
+  content: '#';
+}
+
+main > #messages {
+  border-left: 1px solid black;
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
+h1 {
+  font-family: monospace;
+  margin: 10px;
+  text-align: center;
+}
+
+#message {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  background: darkgrey;
+  display: flex;
+}
+#message #msg {
+  border: none;
+  font-size: 1.5em;
+  color: #333;
+  padding: 5px;
+  flex: 1;
+}
+#message>button[type=submit] {
+  margin: 0 20px 0 0 ;
+  border: none;
+  color: grey;
+}

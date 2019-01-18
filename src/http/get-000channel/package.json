@@ -2,7 +2,7 @@
   "name": "offrecord-get-000channel",
   "dependencies": {
     "@architect/data": "^2.0.9",
-    "@architect/functions": "^1.11.1",
+    "@architect/functions": "^1.12.1",
     "@begin/data": "^1.1.1"
   }
 }
