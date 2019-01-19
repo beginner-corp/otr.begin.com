@@ -66,27 +66,6 @@ module.exports = async function message({event, payload, connectionID}) {
         payload: receivers
       })
     }
-
-
-    /* unique inboxes
-    let doc = table=> ({table, key, ttl, message})
-    let inboxes = Array.from(new Set([
-      `inbox-${from.teamID}-${from.userID}-${to.userID}`,
-      `inbox-${from.teamID}-${to.userID}-${from.userID}`
-    ]))
-
-    // save the message
-    await data.set(inboxes.map(doc))
-    */
-
-    /* send the message
-    let recipients = Array.from(new Set([connectionID, receiver.connectionID]))
-    let ws = arc.ws(event)
-    await Promise.all(recipients.map(async id=> {
-      // send the message to the client
-      message.action = 'message'
-      return ws.send({id, payload:msg})
-    }))*/
   }
   catch(e) {
     console.log(e)

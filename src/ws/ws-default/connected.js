@@ -11,26 +11,35 @@ module.exports = async function connected({event, payload, connectionID}) {
   // - delete the otp record
   // - save a new active user
   // - save the connection
+  // - notify the team
   if (otp) {
-    // lookup actives by teamID
+
+    // api gateway socket connections expire in 2 hours
+    let ttl = ((Date.now() + 7.2e+6) / 1000)
+
+    // we lookup actives by teamID so lets construct that message
     let active = {
       table: `team-${otp.account.teamID}`,
       key: otp.account.userID,
+      ttl,
       account: otp.account,
       action: 'connect',
       connectionID,
     }
-    // lookup connections by connectionID
+
+    // we lookup connections by connectionID
     let connection = {
       table: 'connections',
       key: connectionID,
+      ttl,
       account: otp.account,
     }
-    // work as quickly as possible
+
+    // write the data
     await Promise.all([
       data.destroy(otp),
       data.set([active, connection]),
-      arc.ws(event).send({id:connectionID, payload:active})
+      arc.ws(event).send({id:connectionID, payload:active}),
     ])
   }
 }
