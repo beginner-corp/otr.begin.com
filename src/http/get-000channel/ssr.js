@@ -5,7 +5,7 @@ let renderMessages = require('@architect/views/messages')
 /**
  * serverless side render of the app chrome
  */
-module.exports = function ssr({team, messages, otp}) {
+module.exports = function ssr({team, messages, userID, otp}) {
   return `
 <main>
   <nav>
@@ -13,7 +13,7 @@ module.exports = function ssr({team, messages, otp}) {
     <form id=logout action=/logout method=post>
       <button type=submit>Sign out</button>
     </form>
-    <section id=team>${renderTeam(team)}</section>
+    <section id=team>${renderTeam(userID, team)}</section>
   </nav>
   
   <section id=messages>${renderMessages(messages)}</section>

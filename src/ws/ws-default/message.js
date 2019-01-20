@@ -62,7 +62,7 @@ module.exports = async function message({event, payload, connectionID}) {
 
       // update their client
       await ws.send({
-        id: to.connectionID,
+        id: receiver.connectionID,
         payload: receivers
       })
     }
