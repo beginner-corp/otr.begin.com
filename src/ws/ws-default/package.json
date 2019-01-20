@@ -4,6 +4,7 @@
     "@architect/data": "^2.0.9",
     "@architect/functions": "^1.12.1",
     "@begin/data": "^1.1.1",
-    "aws-sdk": "^2.390.0"
+    "aws-sdk": "^2.390.0",
+    "xss": "^1.0.3"
   }
 }

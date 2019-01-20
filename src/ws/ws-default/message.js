@@ -1,5 +1,6 @@
 let arc = require('@architect/functions')
 let data = require('@begin/data')
+let xss = require('xss')
 
 module.exports = async function message({event, payload, connectionID}) {
   try {
@@ -28,7 +29,7 @@ module.exports = async function message({event, payload, connectionID}) {
     let ttl = (Date.now() + 60*1000)/1000
     let to = receiver.account
     let from = sender.account
-    let message = {to, from, text: payload.text}
+    let message = {to, from, text: xss(payload.text)}
     let action = 'message'
 
     // save the message to the senders inbox
