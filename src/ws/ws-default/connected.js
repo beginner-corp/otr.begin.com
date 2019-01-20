@@ -29,7 +29,7 @@ module.exports = async function connected({event, payload, connectionID}) {
       connectionID,
     }
 
-    // we lookup connections by connectionID
+    // we lookup connections by connectionID so we save those too
     let connection = {
       table: 'connections',
       key: connectionID,
@@ -37,7 +37,7 @@ module.exports = async function connected({event, payload, connectionID}) {
       account: otp.account,
     }
 
-    // write the account and notify the connection
+    // write the account data and notify the connection
     await Promise.all([
       data.destroy(otp),
       data.set([active, connection]),

@@ -1,5 +1,4 @@
 let connected = require('./connected')
-let disconnected = require('./disconnected')
 let message = require('./message')
 
 exports.handler = async function ws(event) {
@@ -8,7 +7,6 @@ exports.handler = async function ws(event) {
   let connectionID = event.requestContext.connectionId
   let actions = {
     connected,
-    disconnected,
     message
   }
   let action = payload.action
@@ -16,7 +14,7 @@ exports.handler = async function ws(event) {
     await actions[action].call({}, {event, payload, connectionID})
   }
   else {
-    console.log('unknown', JSON.stringify(payload, null, 2))
+    console.log('payload.action unknown', JSON.stringify(payload, null, 2))
   }
   return {statusCode: 200}
 }

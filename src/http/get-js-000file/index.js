@@ -11,13 +11,11 @@ let ok = [
   'websocket.mjs',
 ]
 
-let allow = f=> ok.includes(f)
-
 /**
  * only serve known ok files
  */
 exports.handler = async function http(req) {
-  if (!allow(req.params.file))
+  if (!ok.includes(req.params.file))
     return {type, status: 404, body:`console.log("${req.params.file} not found")`}
   let file = path.join(__dirname, req.params.file)
   let body = await read(file, {encoding:'utf8'})
