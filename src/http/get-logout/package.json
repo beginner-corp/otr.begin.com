@@ -1,0 +1,6 @@
+{
+  "name": "get-logout",
+  "dependencies": {
+    "@architect/functions": "latest"
+  }
+}

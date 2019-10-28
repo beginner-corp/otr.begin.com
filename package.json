@@ -1,0 +1,15 @@
+{
+  "name": "wsapp",
+  "version": "0.0.0",
+  "description": "A fresh new Architect project!",
+  "scripts": {
+    "start": "npx sandbox",
+    "lint": "eslint . --fix"
+  },
+  "devDependencies": {
+    "@architect/architect": "^6.0.20-RC.9"
+  },
+  "dependencies": {
+    "eslint": "^6.5.1"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "get-login",
+  "dependencies": {
+    "@architect/functions": "latest",
+    "tiny-json-http": "^7.1.2"
+  }
+}

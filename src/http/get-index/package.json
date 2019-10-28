@@ -1,0 +1,7 @@
+{
+  "name": "get-index",
+  "dependencies": {
+    "@architect/functions": "latest",
+    "@begin/data": "^1.1.4"
+  }
+}

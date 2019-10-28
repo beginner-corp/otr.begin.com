@@ -1,0 +1,7 @@
+{
+  "name": "disconnect",
+  "dependencies": {
+    "@architect/functions": "latest",
+    "@begin/data": "^1.1.4"
+  }
+}

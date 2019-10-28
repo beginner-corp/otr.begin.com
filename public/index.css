@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+h1 {
+  margin: 23px;
+  font-style: italic;
+}
+
+div {
+  background: rgb(238, 238, 238);
+  border-radius: 20px;
+  display: flex;
+  width: 160px;
+  top: 20px;
+  right: 20px;
+  position: absolute;
+}
+
+div h3 {
+  text-align: right;
+  flex-grow: 1;
+  font-size: .7em;
+  font-weight: normal;
+}  
+
+div h3 a {  
+  color: black;
+  text-decoration: none;
+  margin-right:10px;
+}
+
+div h3 a:hover {  
+  text-decoration: underline;
+}
+
+div img {
+  margin-left:10px;
+  margin-top:7px;
+  width: 20px;
+  height: 20px;
+  border-radius: 20%;
+}
+
+#message {
+  width: 100%;
+  font-size: 2em;
+}
